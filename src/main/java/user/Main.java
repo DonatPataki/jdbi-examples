@@ -39,9 +39,12 @@ public class Main {
             dao.insert(testUser1);
             dao.insert(testUser2);
             dao.list().stream().forEach(System.out::println);
+            System.out.println("---findByid---");
             System.out.println(dao.findById(2).get().toString());
+            System.out.println("---findByUsername---");
             System.out.println(dao.findByUsername("username2").get().toString());
             dao.delete(dao.findById(2).get());
+            System.out.println("---after deletion---");
             dao.list().stream().forEach(System.out::println);
         }
     }

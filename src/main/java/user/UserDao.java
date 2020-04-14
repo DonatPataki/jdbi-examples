@@ -31,7 +31,7 @@ public interface UserDao {
 
     @SqlUpdate("INSERT INTO user (username, password, name, email, gender, dob, enabled) VALUES (:username, :password, :name, :email, :gender, :dob, :enabled)")
     @GetGeneratedKeys
-    long insert(@Bind User user);
+    long insert(@BindBean User user);
 
     @SqlQuery("SELECT * FROM user WHERE id = :id")
     Optional<User> findById(@Bind("id") long id);
@@ -39,7 +39,7 @@ public interface UserDao {
     @SqlQuery("SELECT * FROM user WHERE username = :username")
     Optional<User> findByUsername(@Bind("username") String username);
 
-    @SqlQuery("DELETE FROM user WHERE id = :id")
+    @SqlUpdate("DELETE FROM user WHERE id = :id")
     void delete(@BindBean User user);
 
     @SqlQuery("SELECT * FROM user ORDER BY id")
